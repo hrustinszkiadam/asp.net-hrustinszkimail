@@ -11,8 +11,13 @@ public enum GenderType {
 
 public class Email
 {
+    private const string Domain = "@hrustinszkimail.com";
+
+    [Required, RegularExpression("^[a-zA-Z0-9._%+-]+$", ErrorMessage = "Invalid characters")]
+    public string Prefix { get; set; }
+
     [Required, EmailAddress]
-    public string Address { get; set; }
+    public string Address { get => $"{Prefix}{Domain}"; }
 
     [Required, StringLength(30, MinimumLength = 2)]
     public string FirstName { get; set; }
@@ -27,7 +32,7 @@ public class Email
     {
         FirstName = string.Empty;
         LastName = string.Empty;
-        Address = string.Empty;
+        Prefix = string.Empty;
         Gender = GenderType.PreferNotToSay;
     }
 
@@ -50,7 +55,7 @@ public class Email
                 continue;
             }
             Email email = new() {
-                Address = parts[0],
+                Prefix = parts[0].Split('@')[0],
                 FirstName = parts[1],
                 LastName = parts[2],
                 Gender = Enum.Parse<GenderType>(parts[3])
