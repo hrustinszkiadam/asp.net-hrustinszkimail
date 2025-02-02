@@ -1,5 +1,36 @@
 @page
+@using hrustinszkimail.Models
 @model CreateModel
 @{
     ViewData["Title"] = "Create Email";
 }
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Email.Prefix" class="form-label fw-bold">Email Address</label><br>
+        <input asp-for="Email.Prefix" class="form-control-inline w-25" required><span class="m-2 fw-semibold">&commat;hrustinszkimail.com</span><br>
+        <span asp-validation-for="Email.Prefix" class="text-warning"></span><br>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email.FirstName" class="form-label fw-bold">First Name</label><br>
+        <input asp-for="Email.FirstName" class="form-control w-50" required>
+        <span asp-validation-for="Email.FirstName" class="text-warning"></span><br>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email.LastName" class="form-label fw-bold">Last Name</label><br>
+        <input asp-for="Email.LastName" class="form-control w-50" required>
+        <span asp-validation-for="Email.LastName" class="text-warning"></span><br>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email.Gender" class="form-label fw-bold">Gender</label><br>
+        @foreach (var gender in Enum.GetValues(typeof(GenderType)))
+        {
+            <div class="form-check">
+                <input type="radio" asp-for="Email.Gender" value="@gender" id="@gender" class="form-check-input" required/>
+                <label for="@gender" class="form-check-label">@gender</label>
+            </div>
+        }
+        <span asp-validation-for="Email.Gender" class="text-warning"></span><br>
+    </div>
+    <input type="submit" value="New Email" class="btn btn-primary">
+</form>
