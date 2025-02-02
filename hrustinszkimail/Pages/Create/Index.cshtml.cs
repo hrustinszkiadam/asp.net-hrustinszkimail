@@ -7,8 +7,6 @@ namespace hrustinszkimail.Pages;
 
 public class CreateModel : PageModel
 {
-    private const string Domain = "@hrustinszkimail.com";
-
     public List<Email> Emails { get; set; } = []; 
 
     [BindProperty]
@@ -17,7 +15,8 @@ public class CreateModel : PageModel
     public IActionResult OnPost()
     {
         Emails = Email.LoadEmails("data/emails.csv");
-        if (Emails.Any(e => e.Prefix == Email.Prefix))
+
+        if(Emails.Any(e => e.Address == Email.Address))
         {
             ModelState.AddModelError("Email.Prefix", "Email already exists");
             return Page();

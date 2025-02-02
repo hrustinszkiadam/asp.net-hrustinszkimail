@@ -8,7 +8,7 @@
 <form method="post">
     <div class="mb-3">
         <label asp-for="Email.Prefix" class="form-label fw-bold">Email Address</label><br>
-        <input asp-for="Email.Prefix" class="form-control-inline w-25" required><span class="m-2 fw-semibold">&commat;hrustinszkimail.com</span><br>
+        <input asp-for="Email.Prefix" class="form-control-inline w-25" required><span class="m-2 fw-semibold">@Email.Domain</span><br>
         <span asp-validation-for="Email.Prefix" class="text-warning"></span><br>
     </div>
     <div class="mb-3">

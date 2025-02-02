@@ -11,7 +11,7 @@ public enum GenderType {
 
 public class Email
 {
-    private const string Domain = "@hrustinszkimail.com";
+    public const string Domain = "@hrustinszkimail.com";
 
     [Required, RegularExpression("^[a-zA-Z0-9._%+-]+$", ErrorMessage = "Invalid characters")]
     public string Prefix { get; set; }
