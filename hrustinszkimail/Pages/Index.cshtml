@@ -6,6 +6,24 @@
 
 <div class="text-center">
     <table class="table table-striped">
-
+        <thead>
+            <tr>
+                <th scope="col">Email Address</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var email in Model.Emails)
+            {
+                <tr>
+                    <th scope="row">@email.Address</th>
+                    <td>@email.FirstName</td>
+                    <td>@email.LastName</td>
+                    <td>@email.Gender</td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>

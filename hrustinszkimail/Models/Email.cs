@@ -20,7 +20,7 @@ public class Email
     [Required, StringLength(30, MinimumLength = 2)]
     public string LastName { get; set; }
 
-    [Required]
+    [Required, EnumDataType(typeof(GenderType))]
     public GenderType Gender { get; set; }
 
     public Email()
