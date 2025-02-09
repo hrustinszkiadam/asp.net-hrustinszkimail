@@ -23,14 +23,14 @@
     </div>
     <div class="mb-3">
         <label asp-for="Email.Gender" class="form-label fw-bold">Gender</label><br>
-        @foreach (var gender in Enum.GetValues(typeof(GenderType)))
+        @foreach (var gender in Enum.GetValues<GenderType>())
         {
-            <div class="form-check">
+            <div class="form-check form-check-inline">
                 <input type="radio" asp-for="Email.Gender" value="@gender" id="@gender" class="form-check-input" required/>
                 <label for="@gender" class="form-check-label">@gender</label>
             </div>
         }
         <span asp-validation-for="Email.Gender" class="text-warning"></span><br>
     </div>
-    <input type="submit" value="New Email" class="btn btn-primary">
+    <input type="submit" value="Create" class="btn btn-primary px-5 py-3">
 </form>
